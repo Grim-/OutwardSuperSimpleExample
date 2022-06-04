@@ -24,17 +24,19 @@ In the right panel you can see every component that is currently on the selected
 
 (We'll come back to this later)
 
-#YEAH BUT WHAT IS A COMPONENT?
+
+Part Two : #YEAH BUT WHAT IS A COMPONENT?
 
 Well ok but that doesn't really tell us still *what* a component is right?
 
-Well a component is whatever you want it to be. Lets take a recent and thankfully very straightforward example where Avrixel wanted to create a simple mechanic for their class, if you want more information on the class itself please visit the #frost-warrior discord channel.
+Well a component is whatever you want it to be. At it's core just code.
+
+Lets take a recent and thankfully very straightforward example where Avrixel wanted to create a simple mechanic for their class, if you want more information on the class itself please visit the #frost-warrior discord channel.
 
 In terms of mechanics, they wanted to check that whenever the player dodges, if they have any stacks of their custom Status Effect named "Permafrost" and remove it.
 
 
-So we need to create a MonoBehaviour that we add to the PlayerGameObject and it listens for when the player dodges and then removes a "stack" of the LeveledStatusEffect.
-
+So we need to create a MonoBehaviour that we add to the PlayerGameObject and that listens for when the player dodges and then removes a "stack" of the LeveledStatusEffect. A real world example of a LevelledStatusEffect would be the Alert buff "https://outward.fandom.com/wiki/Alert" 
 
 But how *exactly* do we 'listen' for when the player dodges? This is the part of modding where things get tricky, the straight forward answer is because someone already had a good idea how a game is set up, and had a rough idea where to look already. 
 
@@ -52,13 +54,56 @@ then navigate to where you have Outward installed once there navigate to Outward
 ![image](https://user-images.githubusercontent.com/3288858/172026171-044ed237-059f-436e-8b67-2af50fa29412.png)
 
 
-This is the file Unity creates that contains I believe most if not all of the code we care about. 
+This is the file Unity creates that contains most, if not all of the code from the game. 
 
 
 
 
-Lets look at a screenshot of the Character class in DNSpy 
+Lets look at a screenshot of the Character class in DNSpy by expanding Assembly-CSharp (the curly brackets denote a 'namespace' dont worry too much about this for now, just think of them as folders for code.)
 
+Now to save time because there is a lot, a lot of code in the Assembly, I am going to skip straight to the SendTrivialDodge method of the Character class. 
+
+![image](https://user-images.githubusercontent.com/3288858/172026332-c20568b1-247f-46b3-9895-2e271bf841f4.png)
+
+Specifically this function 
+
+	[PunRPC]
+	protected void SendDodgeTriggerTrivial(Vector3 _direction)
+	{
+		if (this.HasDodgeDirection)
+		{
+			int num = 0;
+			if (this.DodgeRestricted)
+			{
+				num = 1;
+			}
+			else if (this.Inventory.SkillKnowledge.IsItemLearned(8205450))
+			{
+				num = 2;
+			}
+			this.m_animator.SetFloat("DodgeBlend", (float)num);
+		}
+		this.m_animator.SetTrigger("Dodge");
+		if (this.m_currentlyChargingAttack)
+		{
+			this.SendCancelCharging();
+		}
+		this.m_dodgeSoundPlayer.Play(false);
+		this.m_dodging = true;
+		this.StopBlocking();
+		if (this.OnDodgeEvent != null)
+		{
+			this.OnDodgeEvent();
+		}
+		if (this.m_characterSoundManager != null)
+		{
+			Global.AudioManager.PlaySoundAtPosition(this.m_characterSoundManager.GetDodgeSound(), base.transform, 0f, 1f, 1f, 1f, 1f);
+		}
+		base.SendMessage("DodgeTrigger", _direction, SendMessageOptions.DontRequireReceiver);
+	}
+
+
+If you are just starting out following this guide and you are reading this code thinking "ok, well this is about where I leave" - I would encourage you to remain seated! 
 
 
 
