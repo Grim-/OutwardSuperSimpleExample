@@ -237,14 +237,13 @@ gameObject.GetComponent<T> is the same thing for simplicity you don't need to us
 
 
 
-Part 3 : BepInEx and you.
+Part 3 : BepInEx, Harmony and you.
 
 
 So ok we know how to listen for a dodge, we've created a component that we can put on *any* GameObject with a Character component on it, how do we put that onto the Player actually in-game? 
 
 
 Well thats where BepInEx and Harmony come in, If you set up a Visual Studio project from the Mod template linked earlier you will find you already have a class ready to build and put into the game but it does nothing. 
-
 
 
 ```csharp
@@ -326,7 +325,8 @@ The final step is putting our freshly created component on the Player GameObject
 
 Your first few times patching with Harmony this will seem *Anything* but simple, using Notations available through Harmony we are able to ask it to Patch the Awake method of ANY Character class instance, as you can see this simply adds our custom component to the current Character instance that has Awake called by Unity (again Awake is called once when a GameObject is created in scene.
 
-```csharp
+```c#
+
         [HarmonyPatch(typeof(Character), nameof(Character.Awake))]
         public class Character_Awake
         {
@@ -341,12 +341,20 @@ Your first few times patching with Harmony this will seem *Anything* but simple,
 
 	
 
-Now our Project file should look something like this 
+Now our Project file should look something like this in it's entirety.
 
-```csharp
-        [BepInPlugin(GUID, NAME, VERSION)]
-        public class EmosModClass : BaseUnityPlugin
-        {
+```c#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UnityEngine;
+
+namespace OutwardModTemplate
+{
+	[BepInPlugin(GUID, NAME, VERSION)]
+	public class EmosModClass : BaseUnityPlugin
+	{
 		// Choose a GUID for your project. Change "myname" and "mymod".
 		public const string GUID = "YOURUNIQUEID.YOURMODNAME";
 		// Choose a NAME for your project, generally the same as your Assembly Name.
@@ -360,37 +368,83 @@ Now our Project file should look something like this
 		// Awake is called when your plugin is created. Use this to set up your mod.
 		internal void Awake()
 		{
-		    Log = this.Logger;
-		    //apply the patch
-		    new Harmony(GUID).PatchAll();
+			Log = this.Logger;
+			//apply the patch
+			new Harmony(GUID).PatchAll();
 		}
-    	}
-
-	public class DodgeListener : MonoBehaviour
-	{
-	  private Character character;
-
-	  public void Awake()
-	  {
-	    character = GetComponent<Character>();
-	  }
-
-	  public void DodgeTrigger(Vector3 _direction)
-	  {
-	    character.StatusEffectMngr.ReduceStatusLevel("Permafrost", 1);
-	  }
 	}
 
-        [HarmonyPatch(typeof(Character), nameof(Character.Awake))]
-        public class Character_Awake
-        {
-            [HarmonyPrefix]
-            static void Prefix(Character __instance)
-            {
-                  //on awake for whatever character this is add the component
-                __instance.gameObject.AddComponent<DodgeListener>();
-            }
-        }
+
+	//Our Custom Dodge Listner Component
+	public class DodgeListener : MonoBehaviour
+	{
+		private Character character;
+
+		public void Awake()
+		{
+			character = GetComponent<Character>();
+		}
+
+		public void DodgeTrigger(Vector3 _direction)
+		{
+			character.StatusEffectMngr.ReduceStatusLevel("Permafrost", 1);
+		}
+	}
+
+
+	//the Harmony patch for the Character Awake method
+	[HarmonyPatch(typeof(Character), nameof(Character.Awake))]
+	public class Character_Awake
+	{
+		[HarmonyPrefix]
+		static void Prefix(Character __instance)
+		{
+			//on awake for whatever character this is add the component
+			__instance.gameObject.AddComponent<DodgeListener>();
+		}
+	}
+}
 ```
 
 
+
+Now if press Build > Build Project from Visual studio and go to output folder (If you're using the Mod Template its in the "Release" folder)
+
+![image](https://user-images.githubusercontent.com/3288858/172028729-633ad607-3888-4de7-9b84-38128b0e58d1.png)
+
+![image](https://user-images.githubusercontent.com/3288858/172028775-74d5dca3-6286-452c-b46a-52291816f120.png)
+
+
+We now create a folder in our mod profile folder (If you are using R2ModMan) then Profile name > BepInEx > plugins  and create a new folder, this will be your mod folder, drop your created dll in here, now start the modded game (however you usually do that) 
+
+![image](https://user-images.githubusercontent.com/3288858/172028816-e0770c41-10fe-4b36-ae90-11b60ed1786e.png)
+
+
+I have started a new game using our Mod file and opened Unity Explorer again and expanded the Player GameObject, as you can see the Player now successfully has the our component attached to it!
+
+![image](https://user-images.githubusercontent.com/3288858/172029000-3feeb33d-e581-43a3-a011-e8cf4023a7f5.png)
+
+
+You probably dont have Avrixels custom status effect so the code currently will do nothing for you, but if change our DodgeListener component, we can do something else instead!
+
+```c#
+	//Our Custom Dodge Listner Component
+	public class DodgeListener : MonoBehaviour
+	{
+		private Character character;
+
+		public void Awake()
+		{
+			character = GetComponent<Character>();
+		}
+
+		public void DodgeTrigger(Vector3 _direction)
+		{
+			character.StartPuke();
+		}
+	}
+
+
+```
+
+If you update the DodgeTrigger code to the above, you will see that as you expect, once we start
