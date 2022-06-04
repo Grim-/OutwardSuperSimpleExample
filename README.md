@@ -4,7 +4,7 @@
 Firstly I'd like to cover some Unity Basics.
 
 
-Number 1 : 
+Part One : Unity 101.
 
 __Everything you *see* inside Outward while playing is a GameObject, that tree? GameObject. Player? GameObject. Particle Effect System? GAMEOBJECT. __
 So it is important to understand how these things work. 
@@ -15,7 +15,7 @@ It's the components on the GameObject that make it unique. (This is called Compo
 
 Thanks to the magic of magic and Unity Explorer, I can show you quite exactly what that means.
 
-In the picture below you can see two main panels, on the left the "Object Explorer" this allows to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject(everything in the scene is a what?) and expanded it. 
+In the picture below you can see two main panels, on the left the "Object Explorer" this allows us to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject(everything in the scene is a what? a GAMEOBJECT) and expanded it, it's worth noting GameObjects can have child GameObjects with their own components on and this is what you can see under the PlayerChar GameObject. 
 
 In the right panel you can see every component that is currently on the selected GameObject, there are a lot because the PlayerCharacter GameObject is very complex with many moving parts that are seemingly not connected at all, this isn't true ofcourse but it sure does look that way.
 
@@ -31,12 +31,59 @@ Well ok but that doesn't really tell us still *what* a component is right?
 
 Well a component is whatever you want it to be. At it's core just code.
 
+The MonoBehaviour component gives us access to a few Methods that are called depending on the GameObjects Lifecycle.
+
+    //custom component
+    public class YourComponentName : MonoBehaviour
+    {        
+        //This is called by the Unity Engine whenever a new component is created, its useful for things you only need to do one time only.
+        public void Awake()
+        {
+            
+        }
+	
+        //This is called by the Unity Engine on each component whenever the scene starts to play, this differs from Awake as an Object is only created once, but it may call start multiple times depending on how many times the scene it is contained in is started.
+	public void Start()
+	{
+	
+	}
+	
+        //This is called every frame by Unity (If you're curious how - Super Efficient Reflection) 
+	public void Update()
+	{
+	
+        }
+
+        //NOTE 
+        //There is very little chance you want to be using FixedUpdate with Outward Mods unless you are working with the Unity Physics system (PhysX) (Rigidbody components)
+	//This is called every FIXED frame by Unity 
+        //- This differs from Update in that by Default if your game runs at 60 FPS, update is called 60 times per second as you would expect, but FixedUpdate is strictly fixed and will be (by default settings) will be called 50 times for frame, meaning it can "skip" frames. This helps keeps physical reactions in Sync with Game play
+	public void FixedUpdate()
+	{
+	
+        }
+    }
+
+
+Armed with some basics lets move on to the current use-case.
+
+
 Lets take a recent and thankfully very straightforward example where Avrixel wanted to create a simple mechanic for their class, if you want more information on the class itself please visit the #frost-warrior discord channel.
 
-In terms of mechanics, they wanted to check that whenever the player dodges, if they have any stacks of their custom Status Effect named "Permafrost" and remove it.
+
+In terms of mechanics, Avrixel wanted to check that whenever the player dodges if they have any stacks of their custom Levelled Status Effect named "Permafrost" and remove a stack.
+
+> A real world example of a LevelledStatusEffect would be the Alert buff "https://outward.fandom.com/wiki/Alert" as you can see from the Wikipedia page the more stacks  you have the more Iframes you have but you also take more damage.
+> Here is also the link to how you can implement a LevelledStatusEffect on your own using XML and SideLoader, I encourage you to read the documents to see what SideLoader is capable of.
+> https://sinai-dev.github.io/OSLDocs/#/API/SL_StatusEffect?id=sl_levelstatuseffect-sl_statuseffect
+
+So we need to create a MonoBehaviour that we add to the PlayerGameObject and that listens for when the player dodges and then removes a "stack" of the LeveledStatusEffect.
 
 
-So we need to create a MonoBehaviour that we add to the PlayerGameObject and that listens for when the player dodges and then removes a "stack" of the LeveledStatusEffect. A real world example of a LevelledStatusEffect would be the Alert buff "https://outward.fandom.com/wiki/Alert" 
+
+
+
+
 
 But how *exactly* do we 'listen' for when the player dodges? This is the part of modding where things get tricky, the straight forward answer is because someone already had a good idea how a game is set up, and had a rough idea where to look already. 
 
