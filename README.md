@@ -9,7 +9,7 @@ Number 1 :
 __Everything you *see* inside Outward while playing is a GameObject, that tree? GameObject. Player? GameObject. Particle Effect System? GAMEOBJECT. __
 So it is important to understand how these things work. 
 
-It's the components on the GameObject that make it unique. 
+It's the components on the GameObject that make it unique. (This is called Composition in programming jargon - an object is defined by the things that make it up)
 
 Thanks to the magic of magic and Unity Explorer, I can show you quite exactly what that means.
 
