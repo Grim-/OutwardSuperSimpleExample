@@ -36,6 +36,32 @@ In terms of mechanics, they wanted to check that whenever the player dodges, if 
 So we need to create a MonoBehaviour that we add to the PlayerGameObject and it listens for when the player dodges and then removes a "stack" of the LeveledStatusEffect.
 
 
+But how *exactly* do we 'listen' for when the player dodges? This is the part of modding where things get tricky, the straight forward answer is because someone already had a good idea how a game is set up, and had a rough idea where to look already. 
+
+So then we use a tool like DNSpy - this is program used to decompile .dll files, this is extremely useful when modding as it allows you to see how the developers do things.
+
+
+You can download DNSpy from https://github.com/dnSpy/dnSpy/releases. 
+
+Once downloaded, run the dnSpy executable and click > File > Open 
+
+![image](https://user-images.githubusercontent.com/3288858/172026117-644c6b2a-7158-4e99-9c1d-03d86102f9f0.png)
+
+then navigate to where you have Outward installed once there navigate to Outward_Data/Managed and select Assembly-CSharp.dll.
+
+![image](https://user-images.githubusercontent.com/3288858/172026171-044ed237-059f-436e-8b67-2af50fa29412.png)
+
+
+This is the file Unity creates that contains I believe most if not all of the code we care about. 
+
+
+
+
+Lets look at a screenshot of the Character class in DNSpy 
+
+
+
+
 
 
 
