@@ -111,7 +111,7 @@ This is the file Unity creates that contains most, if not all of the code from t
 
 Lets look at a screenshot of the Character class in DNSpy by expanding Assembly-CSharp (the curly brackets denote a 'namespace' dont worry too much about this for now, just think of them as folders for code.)
 
-Now to save time because there is a lot, a lot of code in the Assembly, I am going to skip straight to the SendTrivialDodge method of the Character class. Almost everything you will want to read will exist inside the '{}' main Assembly namespace. 
+Now to save time because there is a lot, a lot of code in the Assembly, I am going to skip straight to the SendDodgeTriggerTrivial method of the Character class. Almost everything you will want to read will exist inside the '{}' main Assembly namespace. 
 
 ![image](https://user-images.githubusercontent.com/3288858/172026332-c20568b1-247f-46b3-9895-2e271bf841f4.png)
 
@@ -216,11 +216,12 @@ private Character character;
 ```
 
 > What about this?
+
 Now we only need to get this reference once, doing it many times is costly, so the awake method is ideal for this as it is only ever called once, perfect.
 
 Remember when we talked about everything being components? 
 
-Something you will do very often while working with any Unity game is using the GetComponent function to get a reference to a component GetComponent<T> where T is the type (the class) of component you wish to retrieve.
+Something you will do very often while working with any Unity game is using the GetComponent<T>() function to get a reference to a component where T is the type (the class) of component you wish to retrieve (aslong as it's base is MonoBehaviour!)
 
 ```c#
 	public void Awake()
@@ -273,7 +274,7 @@ Well thats where BepInEx and Harmony come in, If you set up a Visual Studio proj
 ```
 
 
-We now need to introduce our code into the Outward code base, this is infact very simple, when we click "Build" in Visual Studio and create a DLL from our code, any classes we make inside the project are compiled and included.
+We now need to introduce our code into the Outward code base this is infact very simple, when we click "Build" in Visual Studio and create a DLL from our code, any classes we make inside the project are compiled and included.
 
 
 So our project now looks like this, we are almost there! 
@@ -338,5 +339,58 @@ Your first few times patching with Harmony this will seem *Anything* but simple,
         }
 ```
 
+	
+
+Now our Project file should look something like this 
+
+```csharp
+        [BepInPlugin(GUID, NAME, VERSION)]
+        public class EmosModClass : BaseUnityPlugin
+        {
+		// Choose a GUID for your project. Change "myname" and "mymod".
+		public const string GUID = "YOURUNIQUEID.YOURMODNAME";
+		// Choose a NAME for your project, generally the same as your Assembly Name.
+		public const string NAME = "Character Dodge Behaviour";
+		// Increment the VERSION when you release a new version of your mod.
+		public const string VERSION = "1.0.0";
+
+		// For accessing your BepInEx Logger from outside of this class (MyMod.Log)
+		internal static ManualLogSource Log;
+
+		// Awake is called when your plugin is created. Use this to set up your mod.
+		internal void Awake()
+		{
+		    Log = this.Logger;
+		    //apply the patch
+		    new Harmony(GUID).PatchAll();
+		}
+    	}
+
+	public class DodgeListener : MonoBehaviour
+	{
+	  private Character character;
+
+	  public void Awake()
+	  {
+	    character = GetComponent<Character>();
+	  }
+
+	  public void DodgeTrigger(Vector3 _direction)
+	  {
+	    character.StatusEffectMngr.ReduceStatusLevel("Permafrost", 1);
+	  }
+	}
+
+        [HarmonyPatch(typeof(Character), nameof(Character.Awake))]
+        public class Character_Awake
+        {
+            [HarmonyPrefix]
+            static void Prefix(Character __instance)
+            {
+                  //on awake for whatever character this is add the component
+                __instance.gameObject.AddComponent<DodgeListener>();
+            }
+        }
+```
 
 
