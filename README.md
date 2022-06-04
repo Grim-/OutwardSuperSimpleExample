@@ -117,6 +117,7 @@ Now to save time because there is a lot, a lot of code in the Assembly, I am goi
 
 Specifically this function 
 
+```c#
 	[PunRPC]
 	protected void SendDodgeTriggerTrivial(Vector3 _direction)
 	{
@@ -152,8 +153,10 @@ Specifically this function
 		base.SendMessage("DodgeTrigger", _direction, SendMessageOptions.DontRequireReceiver);
 	}
 
+```
 
 If you are just starting out following this guide and you are reading this code thinking "ok, well this is about where I leave" - I would encourage you to remain seated! 
+
 
 Its true there's no replacement for experience but there are also a lot of talented, helpful people on the Modding Discord with knowledge enough to at least point you in the correct direction!
 
@@ -165,31 +168,32 @@ The only line we are interested in is
 ```
 
 
-This again requires some knowledge of how Unity works but I know the function *SendMessage* 'SendMessage("DodgeTrigger, _direction, etc)' is used to call any function that matches the name **DodgeTrigger** that takes the a parameter called "_direction" on other components ** on the same GameObject **  
+This again requires some knowledge of how Unity works but I know the function *SendMessage* 'SendMessage("DodgeTrigger", _direction, etc)' is used to call any function that matches the name **DodgeTrigger** that takes the a parameter called "_direction" on other components ** on the same GameObject **  
 
 So thats our in!
 
  We now know how to we can *listen* for when a player dodges by creating a MonoBehaviour that has a public method Called DodgeTrigger with a parameter called _direction and attaching it to our PlayerChar GameObject!
 
 
+Here's the Unity Documents for SendMessage (as you can see its a method that any MonoBehaviour/Component can call)
+
+https://docs.unity3d.com/ScriptReference/Component.SendMessage.html
+
+
 
 Lets see what that would look like.
 
-    //custom component to go on each
+    //custom component
     public class DodgeListener : MonoBehaviour
     {
-        //Whats this? 
-        //We need a 'reference' to the Character component thats on the Same GameObject as our DodgeTrigger Script so we create a private variable
         private Character character;
 
-        //now we only need to get this reference once, doing it many times is costly, so the awake method is perfect for this, only ever called once, perfect.
         public void Awake()
         {
             character = GetComponent<Character>();
         }
 
         //Here's that public method created from the SendMessage Requirements. so now SendMessage in the SendDodgeTriggerTrivial method of the Character class will also call our Method as long as they share the same GameObject parent.
-
         public void DodgeTrigger(Vector3 _direction)
         {
            //Get the STatusEffectManager of the Current Character and Reduce the status level of the Permafrost Status Effect by 1.
@@ -201,50 +205,127 @@ Lets see what that would look like.
 
 private Character character;
 
-> Whats this? This a private variable that we are going to set in the Awake method so we can access some things on this instance of the Character class.
+> Whats this? This a private variable that we are going to set a *reference* for in the Awake method so we can access some things on this *instance* of the Character class.
 
 
-//now we only need to get this reference once, doing it many times is costly, so the awake method is perfect for this, only ever called once, perfect.
-public void Awake()
-{
-    character = GetComponent<Character>();
-}
+```c#
+	public void Awake()
+	{
+	    character = GetComponent<Character>();
+	}
+```
 
 > What about this?
+Now we only need to get this reference once, doing it many times is costly, so the awake method is ideal for this as it is only ever called once, perfect.
 
 Remember when we talked about everything being components? 
 
-Something you will do very often while working with any Unity game is using the GetComponent function to get a reference to a component
-GetComponent<T> where T is the type (the class) of component you wish to retrieve
-gameObject.GetComponent<Character> is the same thing, for simplicity you don't need to use this, but its a good reminder that again, we're just dealing with GameObjects and Components.
+Something you will do very often while working with any Unity game is using the GetComponent function to get a reference to a component GetComponent<T> where T is the type (the class) of component you wish to retrieve.
+
+```c#
+	public void Awake()
+	{
+	    character = gameObject.GetComponent<Character>();
+	}
+```
+
+
+gameObject.GetComponent<T> is the same thing for simplicity you don't need to use this (Its implied you want a Component off the current GameObject unless otherwise specified) but its a good reminder that again, we're just dealing with GameObjects and Components.
 
 
 
 
+
+Part 3 : BepInEx and you.
+
+
+So ok we know how to listen for a dodge, we've created a component that we can put on *any* GameObject with a Character component on it, how do we put that onto the Player actually in-game? 
+
+
+Well thats where BepInEx and Harmony come in, If you set up a Visual Studio project from the Mod template linked earlier you will find you already have a class ready to build and put into the game but it does nothing. 
+
+
+
+```csharp
+
+	[BepInPlugin(GUID, NAME, VERSION)]
+	public class EmosModClass : BaseUnityPlugin
+	{
+		// Choose a GUID for your project. Change "myname" and "mymod".
+		public const string GUID = "YOURUNIQUEID.YOURMODNAME";
+		// Choose a NAME for your project, generally the same as your Assembly Name.
+		public const string NAME = "Character Dodge Behaviour";
+		// Increment the VERSION when you release a new version of your mod.
+		public const string VERSION = "1.0.0";
+
+		// For accessing your BepInEx Logger from outside of this class (MyMod.Log)
+		internal static ManualLogSource Log;
+
+		// Awake is called when your plugin is created. Use this to set up your mod.
+		internal void Awake()
+		{
+		    Log = this.Logger;
+		    //apply the patch
+		    new Harmony(GUID).PatchAll();
+		}
+	}
+
+```
+
+
+We now need to introduce our code into the Outward code base, this is infact very simple, when we click "Build" in Visual Studio and create a DLL from our code, any classes we make inside the project are compiled and included.
+
+
+So our project now looks like this, we are almost there! 
+
+```csharp
 
         [BepInPlugin(GUID, NAME, VERSION)]
-        public class EmosUniques_SeekingStone : BaseUnityPlugin
+        public class EmosModClass : BaseUnityPlugin
         {
-        // Choose a GUID for your project. Change "myname" and "mymod".
-        public const string GUID = "YOURUNIQUEID.YOURMODNAME";
-        // Choose a NAME for your project, generally the same as your Assembly Name.
-        public const string NAME = "Character Behaviour";
-        // Increment the VERSION when you release a new version of your mod.
-        public const string VERSION = "1.0.0";
+		// Choose a GUID for your project. Change "myname" and "mymod".
+		public const string GUID = "YOURUNIQUEID.YOURMODNAME";
+		// Choose a NAME for your project, generally the same as your Assembly Name.
+		public const string NAME = "Character Dodge Behaviour";
+		// Increment the VERSION when you release a new version of your mod.
+		public const string VERSION = "1.0.0";
 
-        // For accessing your BepInEx Logger from outside of this class (MyMod.Log)
-        internal static ManualLogSource Log;
+		// For accessing your BepInEx Logger from outside of this class (MyMod.Log)
+		internal static ManualLogSource Log;
 
-        // Awake is called when your plugin is created. Use this to set up your mod.
-        internal void Awake()
-        {
-            Log = this.Logger;
-            //apply the patch
-            new Harmony(GUID).PatchAll();
-        }
+		// Awake is called when your plugin is created. Use this to set up your mod.
+		internal void Awake()
+		{
+		    Log = this.Logger;
+		    //apply the patch
+		    new Harmony(GUID).PatchAll();
+		}
+    	}
 
-         // Ask Harmony to patch the Awake method of the Character class
-         // 
+	public class DodgeListener : MonoBehaviour
+	{
+	  private Character character;
+
+	  public void Awake()
+	  {
+	    character = GetComponent<Character>();
+	  }
+
+	  public void DodgeTrigger(Vector3 _direction)
+	  {
+	    character.StatusEffectMngr.ReduceStatusLevel("Permafrost", 1);
+	  }
+	}
+
+```
+
+
+The final step is putting our freshly created component on the Player GameObject, there are a lot of methods to do this but Faeryn again showed a fairly simple way to ensure it's on every GameObject that has a Character component by creating a simple patch for the Character.Awake method (Remember the MonoBehaviour LifeCycle?)
+
+
+Your first few times patching with Harmony this will seem *Anything* but simple, using Notations available through Harmony we are able to ask it to Patch the Awake method of ANY Character class instance, as you can see this simply adds our custom component to the current Character instance that has Awake called by Unity (again Awake is called once when a GameObject is created in scene.
+
+```csharp
         [HarmonyPatch(typeof(Character), nameof(Character.Awake))]
         public class Character_Awake
         {
@@ -255,7 +336,7 @@ gameObject.GetComponent<Character> is the same thing, for simplicity you don't n
                 __instance.gameObject.AddComponent<DodgeListener>();
             }
         }
-    }
+```
 
 
 
