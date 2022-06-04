@@ -9,6 +9,8 @@ Number 1 :
 __Everything you *see* inside Outward while playing is a GameObject, that tree? GameObject. Player? GameObject. Particle Effect System? GAMEOBJECT. __
 So it is important to understand how these things work. 
 
+A GameObject by itself is nothing (quite literally nothing but a positon in the World represented by the Transform component) by adding Mesh Renderers, Particle Systems, Trail Effects, all these things are what's called a component, a component is still a c# class but it extends from the MonoBehaviour class, this is a class *ALL* GameObjects in the scene have. 
+
 It's the components on the GameObject that make it unique. (This is called Composition in programming jargon - an object is defined by the things that make it up)
 
 Thanks to the magic of magic and Unity Explorer, I can show you quite exactly what that means.
@@ -20,12 +22,13 @@ In the right panel you can see every component that is currently on the selected
 
 ![UnityExplorer_PlayerGameObject_InScene](https://user-images.githubusercontent.com/3288858/172019801-93aa16fa-fb2a-47d3-ab7f-8de617ee3658.png)
 
+(We'll come back to this later)
 
+#YEAH BUT WHAT IS A COMPONENT?
 
+Well ok but that doesn't really tell us still *what* a component is right?
 
-A GameObject by itself is nothing (quite literally nothing but a positon in the World) by adding Mesh Renderers, Particle Systems, Trail Effects, all these things are what's called a component, a component is still a c# class but it extends from the MonoBehaviour class, this is a class *ALL* GameObjects in the scene have. 
-
-Well ok but that doesn't really tell us still *what* a component is right? Well a component is whatever you want it to be. Lets take a recent and thankfully very straightforward example where Avrixel wanted to create a simple mechanic for their class, if you want more information on the class itself please visit the #frost-warrior discord channel.
+Well a component is whatever you want it to be. Lets take a recent and thankfully very straightforward example where Avrixel wanted to create a simple mechanic for their class, if you want more information on the class itself please visit the #frost-warrior discord channel.
 
 In terms of mechanics, they wanted to check that whenever the player dodges, if they have any stacks of their custom Status Effect named "Permafrost" and remove it.
 
