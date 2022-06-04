@@ -33,6 +33,7 @@ Well a component is whatever you want it to be. Lets take a recent and thankfull
 In terms of mechanics, they wanted to check that whenever the player dodges, if they have any stacks of their custom Status Effect named "Permafrost" and remove it.
 
 
+So we need to create a MonoBehaviour that we add to the PlayerGameObject and it listens for when the player dodges and then removes a "stack" of the LeveledStatusEffect.
 
 
 
