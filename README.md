@@ -13,7 +13,9 @@ A GameObject by itself is nothing (quite literally nothing but a positon in the 
 
 It's the components on the GameObject that make it unique. (This is called Composition in programming jargon - an object is defined by the things that make it up)
 
-Thanks to the magic of magic and Unity Explorer, I can show you quite exactly what that means.
+Thanks to the magic of magic and Unity Explorer, I can show you quite exactly what that means. 
+
+link Unity Explorer : https://outward.thunderstore.io/package/sinai-dev/UnityExplorer/
 
 In the picture below you can see two main panels, on the left the "Object Explorer" this allows us to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject(everything in the scene is a what? a GAMEOBJECT) and expanded it, it's worth noting GameObjects can have child GameObjects with their own components on and this is what you can see under the PlayerChar GameObject. 
 
@@ -489,7 +491,11 @@ This is not a good idea for a mod, collisions make up a large part of this game'
 
 ```
 
-If you update the DodgeTrigger code to the above, you will see that as you expect, once we start the game and press dodge, we teleport 10 units ahead of the input direction
+If you update the DodgeTrigger code to the above, you will see that as you expect, once we start the game and press dodge, we teleport 10 units ahead of the input direction. 
+
+I wrote this mini guide in the hopes of inspiring some budding modders take the first steps with a practical example. 
+
+I hope this helps some what connect the dots of modding in Outward.
 
 https://i.imgur.com/6OzRVwm.mp4
 
