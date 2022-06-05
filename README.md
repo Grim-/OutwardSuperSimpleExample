@@ -471,6 +471,6 @@ Instead of removing a status effect you probably dont have (yet!) why dont we ma
 If you update the DodgeTrigger code to the above, you will see that as you expect, once we start the game and press dodge, we teleport 10 units ahead of the input direction
 
 
-https://imgur.com/a/yye7HP5
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/yye7HP5" data-context="false" ><a href="//imgur.com/a/yye7HP5"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
