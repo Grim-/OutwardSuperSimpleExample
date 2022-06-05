@@ -1,7 +1,7 @@
 # OutwardSuperSimpleExample
 
 
-Firstly I'd like to cover some Unity Basics.
+Firstly I'd like to cover some Unity Basics before moving on to the mod itself.
 
 
 ## Part One : Unity 101.
@@ -10,18 +10,56 @@ __Everything you *see* inside Outward while playing is a GameObject, that tree? 
 
 __So it is important to understand how these things work. __
 
-Lets start with Unity
+Lets start with a general set up in the Unity Editor first.
 
-A GameObject by itself is nothing, quite literally nothing but a positon in the World represented by the Transform component.
+A Unity game is made up of 'Scenes' - its useful to think of 'Scenes' as 'levels' that contain GameObjects which themselves contain components. 
 
-When we start adding Mesh Renderers, Particle Systems, Trail Effects, all these things are what's called a component, a component is still a C# class but it extends from the MonoBehaviour class, this is a class *ALL* GameObjects(and their constituent components) in the scene have. 
+> This isn't exactly true as you may have a Scene that has GameObjects within it that are never seen by the player, or used as part of a level. Some games might only ever use 1 Scene and have everything dynamically loaded into that one scene (aka "chunking")
 
 
+Here is a screenshot of a project from the *Unity Editor* on the right in the "Hierarchy" panel you can see the Scene Hierarchy "TestScene" which contains all the GameObjects present in this Scene.
 
-It's the components on the GameObject that make it unique. (This is called Composition in programming jargon - an object is defined by the things that make it up)
+The currently selected GameObject is "Bald Human" this is the furthest right panel and is called the "Inspector" usually the inspector starts with a GameObjects name and the transform component, you can also see a list of all the other components on this GameObject.
+
+![image](https://user-images.githubusercontent.com/3288858/172053192-d617c139-f30a-4c56-9b94-09f72076ea54.png)
+
+
+> If you look carefully above in the Unity Editor screenshot you can see that there is a second Scene further down the hierarchy under "DontDestroyOnLoad" this is a 'special' scene in Unity. 
+
+
+Infact a good example of this is in Outward at any one time there are three Scenes running "DontDestroyOnLoad", "HideAndDontSave" and the Current Active Scene.
 
 Thanks to the magic of magic and [Unity Explorer](https://outward.thunderstore.io/package/sinai-dev/UnityExplorer/), I can show you quite exactly what that means. 
 
+![image](https://user-images.githubusercontent.com/3288858/172053933-a3d86b30-386b-43a0-8d1c-2e1c6f4d9373.png)
+
+In the screenshot above you can see the interface for Unity Explorer an extremely useful mod developed by Sinai, which allows you to view the Scene Hierarchy in a somewhat similar way to the Unity Editor interface itself.
+
+Take note of the "Scene" drop down and the names of those Scenes. "MainMenu_Empty" being the current scene and the one the player would "see" in-game.
+
+You can see all kinds of GameObjects with all kinds of different components on them in the hierarchy, GameObjects are what the player sees in the Scene, including UI, videos, models anything.
+
+
+
+##Part 1 A : GameObjects.
+
+> Well ok a Scene is made up of GameObjects which is made up of Components, ok that means nothing to me.
+
+
+Well, A GameObject by itself is nothing! Quite literally nothing but a positon in the World represented by the Transform component.
+
+It's the components on the GameObject that make it unique. (This is called Composition in programming jargon - an object is defined by the things that make it up)
+
+
+When we start adding Mesh Renderers components, Particle System components, Trail Effect components, thats when the GameObject starts to become something meaningful, a component is still a C# class but it extends from the Unity MonoBehaviour class, this is a class *ALL* GameObjects(and their constituent components) in the scene have. 
+
+
+##Part 1 B : A Typical Scene in Outward.
+
+
+> How does this relate to Outward again?
+
+Outward is a game made in the Unity Engine.
 
 In the picture below you can see two main panels, on the left the "Object Explorer" this allows us to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject(everything in the scene is a what? a GAMEOBJECT) and expanded it, it's worth noting GameObjects can have child GameObjects with their own components and so on and this is what you can see under the PlayerChar GameObject. 
 
@@ -34,6 +72,7 @@ In the right panel you can see every component that is currently on the selected
 
 
 ## Part Two : YEAH BUT WHAT IS A COMPONENT?
+
 
 Well ok but that doesn't really tell us still *what* a component is right?
 
