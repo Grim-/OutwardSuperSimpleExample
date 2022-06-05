@@ -7,17 +7,23 @@ Firstly I'd like to cover some Unity Basics.
 ## Part One : Unity 101.
 
 __Everything you *see* inside Outward while playing is a GameObject, that tree? GameObject. Player? GameObject. Particle Effect System? GAMEOBJECT. __
-So it is important to understand how these things work. 
 
-A GameObject by itself is nothing (quite literally nothing but a positon in the World represented by the Transform component) by adding Mesh Renderers, Particle Systems, Trail Effects, all these things are what's called a component, a component is still a c# class but it extends from the MonoBehaviour class, this is a class *ALL* GameObjects(and their constituent components) in the scene have. 
+__So it is important to understand how these things work. __
+
+Lets start with Unity
+
+A GameObject by itself is nothing, quite literally nothing but a positon in the World represented by the Transform component.
+
+When we start adding Mesh Renderers, Particle Systems, Trail Effects, all these things are what's called a component, a component is still a C# class but it extends from the MonoBehaviour class, this is a class *ALL* GameObjects(and their constituent components) in the scene have. 
+
+
 
 It's the components on the GameObject that make it unique. (This is called Composition in programming jargon - an object is defined by the things that make it up)
 
-Thanks to the magic of magic and Unity Explorer, I can show you quite exactly what that means. 
+Thanks to the magic of magic and [Unity Explorer](https://outward.thunderstore.io/package/sinai-dev/UnityExplorer/), I can show you quite exactly what that means. 
 
-link Unity Explorer : https://outward.thunderstore.io/package/sinai-dev/UnityExplorer/
 
-In the picture below you can see two main panels, on the left the "Object Explorer" this allows us to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject(everything in the scene is a what? a GAMEOBJECT) and expanded it, it's worth noting GameObjects can have child GameObjects with their own components on and this is what you can see under the PlayerChar GameObject. 
+In the picture below you can see two main panels, on the left the "Object Explorer" this allows us to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject(everything in the scene is a what? a GAMEOBJECT) and expanded it, it's worth noting GameObjects can have child GameObjects with their own components and so on and this is what you can see under the PlayerChar GameObject. 
 
 In the right panel you can see every component that is currently on the selected GameObject, there are a lot because the PlayerCharacter GameObject is very complex with many moving parts that are seemingly not connected at all, this isn't true ofcourse but it sure does look that way.
 
@@ -27,13 +33,13 @@ In the right panel you can see every component that is currently on the selected
 (We'll come back to this later)
 
 
-## Part Two : #YEAH BUT WHAT IS A COMPONENT?
+## Part Two : YEAH BUT WHAT IS A COMPONENT?
 
 Well ok but that doesn't really tell us still *what* a component is right?
 
 Well a component is whatever you want it to be. At it's core just code.
 
-The MonoBehaviour component gives us access to a few methods that are called depending on the GameObjects 'Lifecycle'
+The [MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html) component gives us access to a few methods that are called depending on the GameObjects 'Lifecycle'
 
     //custom component
     public class YourComponentName : MonoBehaviour
@@ -67,8 +73,6 @@ The MonoBehaviour component gives us access to a few methods that are called dep
     }
 
 
-Visit : https://docs.unity3d.com/ScriptReference/MonoBehaviour.html For a Full list of the Lifecycle and methods available.
-
 Armed with some basics lets move on to the current use-case.
 
 Lets take a recent and thankfully very straightforward example where Avrixel wanted to create a mechanic for their class, if you want more information on the class itself please visit the #frost-warrior discord channel.
@@ -77,14 +81,12 @@ Lets take a recent and thankfully very straightforward example where Avrixel wan
 In terms of mechanics Avrixel wanted to check that whenever the player dodges if they have any stacks of their custom Levelled Status Effect named "Permafrost" and remove a stack.
 
 > A real world example of a LevelledStatusEffect would be the Alert buff "https://outward.fandom.com/wiki/Alert" as you can see from the Wikipedia page the more stacks  you have the more Iframes you have but you also take more damage.
+
+
 > Here is also the link to how you can implement a LevelledStatusEffect on your own using XML and SideLoader, I encourage you to read the documents to see what SideLoader is capable of.
 > https://sinai-dev.github.io/OSLDocs/#/API/SL_StatusEffect?id=sl_levelstatuseffect-sl_statuseffect
 
-So we need to create a MonoBehaviour that we add to the PlayerGameObject and that listens for when the player dodges and then removes a "stack" of the LeveledStatusEffect.
-
-
-
-
+So we need to create a MonoBehaviour(Component) that we add to the Player *GameObject* and that listens for when the player dodges and then removes a "stack" of the LeveledStatusEffect.
 
 
 
@@ -170,21 +172,20 @@ The only line we are interested in is
 ```
 
 
-This again requires some knowledge of how Unity works but I know the function *SendMessage* 'SendMessage("DodgeTrigger", _direction, etc)' is used to call any function that matches the name **DodgeTrigger** that takes the a parameter called "_direction" on other components ** on the same GameObject **  
+This again requires some knowledge of how Unity works in this particular case, but since I know the function *SendMessage* 'SendMessage("DodgeTrigger", _direction, etc)' is used to call any function that matches the name **DodgeTrigger** that takes the a parameter called "_direction" on other components ** on the same GameObject **  
 
 So thats our in!
 
  We now know how to we can *listen* for when a player dodges by creating a MonoBehaviour that has a public method Called DodgeTrigger with a parameter called _direction and attaching it to our PlayerChar GameObject!
 
 
-Here's the Unity Documents for SendMessage (as you can see its a method that any MonoBehaviour/Component can call)
-
-https://docs.unity3d.com/ScriptReference/Component.SendMessage.html
+Here's the Unity Documents for [SendMessage](https://docs.unity3d.com/ScriptReference/Component.SendMessage.html) (as you can see its a method that any MonoBehaviour/Component can call)
 
 
 
 Lets see what that would look like.
 
+```c#
     //custom component
     public class DodgeListener : MonoBehaviour
     {
@@ -202,7 +203,7 @@ Lets see what that would look like.
             character.StatusEffectMngr.ReduceStatusLevel("Permafrost", 1);
         }
     }
-
+```
 
 
 private Character character;
@@ -218,6 +219,8 @@ private Character character;
 ```
 
 > What about this?
+
+This is us actually setting that Character variable to a *reference of an instance* - if this doesn't make too much sense, 
 
 Now we only need to get this reference once, doing it many times is costly, so the awake method is ideal for this as it is only ever called once, perfect.
 
