@@ -489,7 +489,7 @@ I plan to follow this up with a practical guide on creating *SIMPLE* Particle Ef
 
 Special Thanks, in no particular order
 
-Sinai - of the Modding discord and Creator/Maintainer of SideLoader - without which ALL modding, would be magnitudes more difficult, the impact SideLoader has on the Outward Modding community cannot be understated. 
+Sinai - of the Modding discord and Creator/Maintainer of SideLoader - without which ALL Outward modding, would be magnitudes more difficult, the impact SideLoader has on the Outward Modding community cannot be understated. 
 
 I myself am nothing but a really enthusiastic amateur, I have been working on my own single player RPG for three years now and I have been working in Unity for a lot longer than that I tell you this to give you some context, that the sheer of amount of effort and love that has gone into SideLoader is honestly *staggering*.
 
