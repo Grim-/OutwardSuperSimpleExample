@@ -441,6 +441,15 @@ If you can get the transform of something you can just as easily get the GameObj
 
 So if we have a reference to the Players Scene GameObject, that means we can get the transform component fairly easily. 
 
+Side note : 
+
+A feature of c# are "properties" these like variables can be almost anything, a reference to a component, a function, or a simple variable. 
+
+A GameObject always has a transform property 'gameObject.transform'. and a Transform always a gameObject property 'transform.gameObject'  you will see many properties of the Character class in DNSpy, you can see many properties of the Character class denoted with a wrench symbol, such as the players Inventory, but in our case case, we simply want the transform component.
+
+![image](https://user-images.githubusercontent.com/3288858/172031266-d2a30757-537a-42c8-bc2b-1c5e77244a50.png)
+
+
 We can use this to retrieve the players current position and the current input direction of our DodgeTrigger method in order to teleport the player in direction of our input.
 
 This is not a good idea for a mod, collisions make up a large part of this game's navigation, open world stuff and you can easily find yourself falling through the world or any number of other things, but it is very visual, so lets crack on!
