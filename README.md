@@ -23,7 +23,7 @@ __So it is important to understand how these things work.__
 
 Lets start with a general set up in the Unity Editor first to better understand how everything fits together in Outward.
 
-A Unity game is made up of *Scenes* - it is useful when starting out to think of 'Scenes' as 'levels' that contain GameObjects which themselves contain components. 
+A Unity game is made up of *Scenes* - it is useful when starting out to think of 'Scenes' as 'levels' that contain GameObjects which themselves have various components.
 
 > This isn't exactly true as you may have a Scene that has GameObjects within it that are never seen by the player, or used as part of a level. Some games might only ever use 1 Scene and have everything dynamically loaded into that one scene in chunks as needed aka "chunking".
 
