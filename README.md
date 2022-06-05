@@ -241,7 +241,13 @@ The only line we are interested in is...
 ```
 
 
-This again requires some knowledge of how Unity works in this particular case but since I know the function *SendMessage* "SendMessage("DodgeTrigger", _direction, etc)" is used to call any function that matches the name **DodgeTrigger** that takes the a parameter called "_direction" on any other components that share the same GameObject parent.
+This again requires some knowledge of how Unity works in this particular case but since I know the function *SendMessage*  is used to call any function that matches the name **DodgeTrigger** that takes the a parameter called "_direction" on any other components that share the same GameObject parent.
+
+If you ran the below example it would try to call the function "AFunctionName" passing a float value of 1, to any other components that share the same GameObject parent.
+
+```c#
+SendMessage("AFunctionName", 1f, SendMessageOptions.DontRequireReciever)
+```
 
 Here's the Unity Documents for [SendMessage](https://docs.unity3d.com/ScriptReference/Component.SendMessage.html) (as you can see its a method that any MonoBehaviour/Component can call)
 
