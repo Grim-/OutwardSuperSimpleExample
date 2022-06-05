@@ -3,6 +3,15 @@
 A written guide to help people of the [Outward Modding Discord](https://discord.gg/DPD9eGDU) getting started creating mods and understanding the Unity Engine. 
  
 
+
+Useful links : [Mefinos Outward Mod Template](https://github.com/Mefino/OutwardModTemplate) 
+	       [Faeryns Outward Mod Template](https://github.com/Faeryn/BepInEx-ModTemplate)
+               [SideLoader Docs](https://sinai-dev.github.io/OSLDocs)
+	       [Outward Wiki Modding Section](https://outward.fandom.com/wiki/Mod_development_guide)
+
+We will be using Mefinos Outward Mod Template as I started with this one originally, download and extract somewhere, remember where we wont be needing it for a while.
+
+
 Firstly I'd like to cover some Unity Basics before moving on to the modding itself.
 
 ## Part One : Unity 101.
