@@ -170,6 +170,9 @@ Lets look at a screenshot of the Character class in DNSpy by expanding Assembly-
 
 Now to save time because there is a lot, a lot of code in the Assembly, I am going to skip straight to the SendDodgeTriggerTrivial method of the Character class. Almost everything you will want to read will exist inside the '{}' main Assembly namespace. 
 
+![image](https://user-images.githubusercontent.com/3288858/172055270-dcb106d0-875f-4fac-89eb-e19d3fc88d25.png)
+
+
 ![image](https://user-images.githubusercontent.com/3288858/172026332-c20568b1-247f-46b3-9895-2e271bf841f4.png)
 
 Specifically this function 
