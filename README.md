@@ -41,7 +41,7 @@ You can see all kinds of GameObjects with all kinds of different components on t
 
 
 
-##Part 1 A : GameObjects.
+## Part 1 A : GameObjects.
 
 > Well ok a Scene is made up of GameObjects which is made up of Components, ok that means nothing to me.
 
@@ -54,7 +54,7 @@ It's the components on the GameObject that make it unique. (This is called Compo
 When we start adding Mesh Renderers components, Particle System components, Trail Effect components, thats when the GameObject starts to become something meaningful, a component is still a C# class but it extends from the Unity MonoBehaviour class, this is a class *ALL* GameObjects(and their constituent components) in the scene have. 
 
 
-##Part 1 B : A Typical Scene in Outward.
+## Part 1 B : A Typical Scene in Outward.
 
 
 > How does this relate to Outward again?
