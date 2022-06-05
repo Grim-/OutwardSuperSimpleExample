@@ -90,11 +90,13 @@ So instead Unity offers a simple way to have GameObjects persist between scenes 
 ## Part Two : YEAH BUT WHAT IS A COMPONENT?
 
 
-Well ok a Scene contains GameObjects and they have components, but that doesn't really tell us still *what* a component is right?
+Well ok a Scene contains GameObjects which are made up of components cool, but that doesn't really tell us still *what* a component is right?
 
-Well a component is whatever you want it to be. At it's core just code.
+Well a component is whatever you want it to be. At it's core just code. The MeshRenderer component which takes mesh data to draw the model mesh in-game, thats just a component. 
 
-The [MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html) component gives us access to a few methods that are called depending on the GameObjects 'Lifecycle'
+The Particle System that creates and manages thousands of particles, how they behave, how and what they can react to this is just another component.
+
+The [MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html) base component gives us access to a few methods that are called depending on the GameObjects 'Lifecycle'.
 
 ```c#
     //custom component
@@ -132,31 +134,30 @@ The [MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
 
 Armed with some basics lets move on to the current use-case.
 
-Lets take a recent and thankfully very straightforward example where Avrixel wanted to create a mechanic for their class, if you want more information on the class itself please visit the #frost-warrior discord channel.
+Lets take a recent and thankfully very straightforward example where Avrixel wanted to create a mechanic for their class, if you want more information on the class itself please visit the #frost-warrior Outward Modding Discord channel.
 
 
-In terms of mechanics Avrixel wanted to check that whenever the player dodges if they have any stacks of their custom Levelled Status Effect named "Permafrost" and remove a stack.
+In terms of mechanics Avrixel wanted to check that whenever the player dodges if they have any stacks of their custom Levelled Status Effect named "Permafrost" then remove a stack.
 
-> A real world example of a LevelledStatusEffect would be the Alert buff "https://outward.fandom.com/wiki/Alert" as you can see from the Wikipedia page the more stacks  you have the more Iframes you have but you also take more damage.
+> A real world example of a LevelledStatusEffect would be the Alert buff "https://outward.fandom.com/wiki/Alert" as you can see from the Wikipedia page the more stacks  you have the more I-frames you have but you also take more damage when you fail to dodge.
 
 
-> Here is also the link to how you can implement a LevelledStatusEffect on your own using XML and SideLoader, I encourage you to read the documents to see what SideLoader is capable of.
+> Here is also the link to how you can implement a LevelledStatusEffect on your own using XML and SideLoader, I encourage you to read the documents to see what SideLoader is capable of. (will update later!)
 > https://sinai-dev.github.io/OSLDocs/#/API/SL_StatusEffect?id=sl_levelstatuseffect-sl_statuseffect
 
 So we need to create a MonoBehaviour(Component) that we add to the Player *GameObject* and that listens for when the player dodges and then removes a "stack" of the LeveledStatusEffect.
 
 
+> Ok but how *exactly* do we 'listen' for when the player dodges? 
 
-> But how *exactly* do we 'listen' for when the player dodges? 
-
-This is the part of modding where things get tricky, its experience and a lot of reading in DNSpy.
+This is the part of modding where things get tricky, it just experience and a lot of reading in DNSpy.
 
 I like to stick to real world examples when I can, so in this particular case Faeryn of the modding discord has a fair amount of experience reading the code through DNSpy and similar programs, so they knew Avrixel would be best looking in the Character class at the SendDodgeTriggerTrivial method. 
 
-So then we use a tool like DNSpy - this is program used to decompile .dll files, this is extremely useful when modding as it allows you to see how the developers do things.
+So then we use a tool like DNSpy - this is a program used to decompile .dll files this is extremely useful when modding as it allows you to see how the developers do things in-game.
 
 
-You can download DNSpy from https://github.com/dnSpy/dnSpy/releases. 
+You can download [DNSpy - Here](https://github.com/dnSpy/dnSpy/releases) 
 
 Once downloaded, run the dnSpy executable and click > File > Open 
 
@@ -167,7 +168,6 @@ then navigate to where you have Outward installed once there navigate to Outward
 ![image](https://user-images.githubusercontent.com/3288858/172055463-f5cc953b-2343-44bc-ba94-1744626c0d54.png)
 
 This is the file Unity creates that contains most, if not all of the code from the game. 
-
 
 
 Lets look at a screenshot of the Character class in DNSpy by expanding Assembly-CSharp (the curly brackets denote a 'namespace' dont worry too much about this for now, just think of them as folders for code.)
