@@ -63,18 +63,29 @@ Outward is a game made in the Unity Engine.
 
 In the picture below you can see two main panels, on the left the "Object Explorer" this allows us to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject(everything in the scene is a what? a GAMEOBJECT) and expanded it, it's worth noting GameObjects can have child GameObjects with their own components and so on and this is what you can see under the PlayerChar GameObject. 
 
+
 In the right panel you can see every component that is currently on the selected GameObject, there are a lot because the PlayerCharacter GameObject is very complex with many moving parts that are seemingly not connected at all, this isn't true ofcourse but it sure does look that way.
 
 
 ![UnityExplorer_PlayerGameObject_InScene](https://user-images.githubusercontent.com/3288858/172019801-93aa16fa-fb2a-47d3-ab7f-8de617ee3658.png)
 
+
 (We'll come back to this later)
 
+Side note regarding "Special Scenes" like DontDestroyOnLoad
+
+> Why does "DontDestroyOnLoad" keep popping up? 
+
+DontDestroyOnLoad is a special scene created by the Unity engine itself used for containing GameObjects that you dont want to be destroyed when a scene exits.
+
+In Outward for example it is much easier to ask Unity to add the Player GameObject to the "DontDestroyOnLoad" scene rather than saving all the changes made to the player > destroying the player > recreating the player in the new scene > then reapply the exact state the player was just in, every time you decide to change area.
+
+So instead Unity offers a simple way to have GameObjects persist between scenes while keeping their state exactly as it was in the last scene, because technically it didnt change scenes at all it remained in the "DontDestroyOnLoad" scene.
 
 ## Part Two : YEAH BUT WHAT IS A COMPONENT?
 
 
-Well ok but that doesn't really tell us still *what* a component is right?
+Well ok a Scene contains GameObjects and they have components, but that doesn't really tell us still *what* a component is right?
 
 Well a component is whatever you want it to be. At it's core just code.
 
