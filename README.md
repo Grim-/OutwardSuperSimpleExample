@@ -50,9 +50,15 @@ You can see all kinds of GameObjects with all kinds of different components on t
 > Well ok a Scene is made up of GameObjects which is made up of Components, ok that means nothing to me.
 
 
-Well, A GameObject by itself is nothing! Quite literally nothing but a positon in the World represented by the Transform component.
+Well, A GameObject by itself is nothing! Quite literally nothing but a positon in the World represented by the Transform component and is as simple as the GameObject gets.
 
-It's the components on the GameObject that make it unique. (This is called Composition in programming jargon - an object is defined by the things that make it up)
+It's the components on the GameObject that make it unique. Every GameObject will atleast have the Transform component, I will cover this more near the end.
+
+*(This is called Composition in programming jargon - an object is defined by the things that make it up)*
+
+You do not need to worry about this too much, but I did want to mention it briefly but if you wish to learn more. The link below covers this in a lot more detail.
+
+[Inheritance Versus Composition In Unity](http://www.sigtrapgames.com/unity-software-design-inheritance-and-composition/)
 
 
 When we start adding Mesh Renderers components, Particle System components, Trail Effect components thats when the GameObject starts to become something meaningful, a component is still a C# class but it extends from the Unity MonoBehaviour class this is a class *ALL* GameObjects(and their constituent components) in the scene have. 
