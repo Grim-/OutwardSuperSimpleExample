@@ -1,22 +1,24 @@
-# OutwardSuperSimpleExample
+# Outward Modding - Taking the next step.
 
 A written guide to help people of the [Outward Modding Discord](https://discord.gg/DPD9eGDU) getting started creating mods and understanding the Unity Engine. 
  
 
-Firstly I'd like to cover some Unity Basics before moving on to the mod itself.
-
+Firstly I'd like to cover some Unity Basics before moving on to the modding itself.
 
 ## Part One : Unity 101.
 
-__Everything you *see* inside Outward while playing is a GameObject, that tree? GameObject. Player? GameObject. Particle Effect System? GAMEOBJECT. __
+__Everything you *see* inside Outward while playing is a GameObject, that tree? GameObject. Player? GameObject. Particle Effect System? GAMEOBJECT__
 
-__So it is important to understand how these things work. __
+__So it is important to understand how these things work.__
 
 Lets start with a general set up in the Unity Editor first to better understand how everything fits together in Outward.
 
-A Unity game is made up of 'Scenes' - its useful to think of 'Scenes' as 'levels' that contain GameObjects which themselves contain components. 
+A Unity game is made up of *Scenes* - it is useful when starting out to think of 'Scenes' as 'levels' that contain GameObjects which themselves contain components. 
 
-> This isn't exactly true as you may have a Scene that has GameObjects within it that are never seen by the player, or used as part of a level. Some games might only ever use 1 Scene and have everything dynamically loaded into that one scene (aka "chunking")
+> This isn't exactly true as you may have a Scene that has GameObjects within it that are never seen by the player, or used as part of a level. Some games might only ever use 1 Scene and have everything dynamically loaded into that one scene (aka "chunking") 
+
+
+> Another case is the "DontDestroyOnLoad" scene which I will briefly cover later.
 
 
 Here is a screenshot of a project from the *Unity Editor* on the right in the "Hierarchy" panel you can see the Scene Hierarchy "TestScene" which contains all the GameObjects present in this Scene.
@@ -26,10 +28,10 @@ The currently selected GameObject is "Bald Human" this is the furthest right pan
 ![image](https://user-images.githubusercontent.com/3288858/172053192-d617c139-f30a-4c56-9b94-09f72076ea54.png)
 
 
-> If you look carefully above in the Unity Editor screenshot you can see that there is a second Scene further down the hierarchy under "DontDestroyOnLoad" this is a 'special' scene in Unity. 
+> If you look carefully above in the Unity Editor screenshot you can see that there is a second Scene further down the right hand "Hierarchy" panel there is another section called "DontDestroyOnLoad" this is a 'special' scene in Unity. 
 
 
-Infact a good example of this is in Outward at any one time there are three Scenes running "DontDestroyOnLoad", "HideAndDontSave" and the Current Active Scene.
+Infact a good example of this is in Outward at any one time there can up be upto three *Scenes* running "DontDestroyOnLoad", "HideAndDontSave" and the Current Active Scene.
 
 Thanks to the magic of magic and [Unity Explorer](https://outward.thunderstore.io/package/sinai-dev/UnityExplorer/), I can show you quite exactly what that means. 
 
