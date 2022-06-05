@@ -433,9 +433,18 @@ You probably dont have Avrixels custom status effect so the code currently will 
 Part 4: Extra Credit
 
 
-Lets change that shall we? And quickly touch on positions in Unity. 
+Lets change that shall we? And quickly touch on the Transform component and positions in Unity. 
 
-Instead of removing a status effect you probably dont have (yet!) why dont we make the Player teleport in the direction of the input?
+Firstly it's important to Understand every GameObject has at the bare minimum a Transform component, the Transform components only job is to hold the information about the position, rotation and scale of the GameObject, nothing else. 
+
+If you can get the transform of something you can just as easily get the GameObject itself where you find one, you will ALWAYS find the other and from that you can check if any component you want exists on the GameObject, some objects might not have them, some components might not be where you'd logically expect, thats ok, just ask in the discord, collectively there is a large base of knowledge between users they are happy to share.
+
+So if we have a reference to the Players Scene GameObject, that means we can get the transform component fairly easily. 
+
+We can use this to retrieve the players current position and the current input direction of our DodgeTrigger method in order to teleport the player in direction of our input.
+
+This is not a good idea for a mod, collisions make up a large part of this game's navigation, open world stuff and you can easily find yourself falling through the world or any number of other things, but it is very visual, so lets crack on!
+
 
 ```c#
 	//Our Custom Dodge Listner Component
