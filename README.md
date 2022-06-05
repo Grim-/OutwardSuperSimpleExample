@@ -287,7 +287,9 @@ private Character character;
 
 > What about this?
 
-This is us actually setting that Character variable to a *reference of an instance* - if this doesn't make too much sense, 
+This is us actually setting that Character variable to a *reference of an instance* - if this doesn't make too much sense, think about it this way, there may be many GameObjects in a typical scene that have a Character component, the player has one and so do enemy AI (but AI also have an extra component CharacterAI) - so if there are many *instances* of Character component floating around on various GameObjects how do we tell Unity that we want to affect the *Current* Character thats dodging?
+
+By finding and setting a component reference, now the component we are creating is automatically injected (covered in Part 3) into the Character class so *Every* thing with a Character component will have our custom component.
 
 Now we only need to get this reference once, doing it many times is costly, so the awake method is ideal for this as it is only ever called once, perfect.
 
@@ -297,8 +299,14 @@ Something you will do very often while working with any Unity game is using the 
 
 ```c#
 	public void Awake()
-	{
+	{  
+	    //check for a Character component on the current GameObject
 	    character = gameObject.GetComponent<Character>();
+            //this does exactly the same, except its implied you want the Character component of the current GameObject.
+	   //character = GetComponent<Character>();
+
+           //if you had a reference to *another* gameObject, say you ray cast into the world and hit another GameObject
+           //Character theOtherCharacter = theOtherGameObject.GetComponent<Character>();
 	}
 ```
 
