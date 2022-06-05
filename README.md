@@ -311,7 +311,7 @@ Now we only need to get this reference once, doing it many times is costly, so t
 
 Remember when we talked about everything being GameObjects in the scene and GameObjects are made up of components? 
 
-Something you will do very often while working with any Unity game is using the GetComponent<T>() function to get a reference to a component where T is the type (the class) of component you wish to retrieve (aslong as it's base is MonoBehaviour!) This could be the Inventory (ItemContainer), the Status/BuffDebuffs (StatusEffectMngr), the one we want is the Character component. I'd encourage you to check out DNSpy and see all the methods and properties available.
+Something you will do very often while working with any Unity game is using the [GetComponent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html) function to get a reference to a component where T is the type (the class) of component you wish to retrieve (aslong as it's base is MonoBehaviour!) This could be the Inventory (ItemContainer), the Status/BuffDebuffs (StatusEffectMngr), the one we want is the Character component. I'd encourage you to check out DNSpy and see all the methods and properties available.
 
 ```c#
 	public void Awake()
