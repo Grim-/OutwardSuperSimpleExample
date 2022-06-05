@@ -56,7 +56,7 @@ It's the components on the GameObject that make it unique. Every GameObject will
 
 *(This is called Composition in programming jargon - an object is defined by the things that make it up)*
 
-You do not need to worry about this too much, if you follow along so far then you already have a basic understanding of Composition (GameObjects are composed of components which define behaviour) but I did want to mention it briefly if you wish to learn more, The link below covers this in a lot more detail.
+You do not need to worry about this too much, if you follow along so far then you already have a basic understanding of Composition (GameObjects are composed of components which define the behaviour of the GameObject) but I did want to mention it briefly if you wish to learn more, The link below covers this in a lot more detail.
 
 [Inheritance Versus Composition In Unity](http://www.sigtrapgames.com/unity-software-design-inheritance-and-composition/)
 
