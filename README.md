@@ -10,7 +10,7 @@ __Everything you *see* inside Outward while playing is a GameObject, that tree? 
 
 __So it is important to understand how these things work. __
 
-Lets start with a general set up in the Unity Editor first.
+Lets start with a general set up in the Unity Editor first to better understand how everything fits together in Outward.
 
 A Unity game is made up of 'Scenes' - its useful to think of 'Scenes' as 'levels' that contain GameObjects which themselves contain components. 
 
@@ -63,12 +63,12 @@ Outward is a game made in the Unity Engine.
 
 In the screenshot below you can see two main panels on the left the "Object Explorer" this allows us to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject.
 
-(everything in the scene is a what? a GAMEOBJECT) 
+(everything in the scene is a what? - A GAMEOBJECT) 
 
-Now I have expanded it in the hierarchy to see its child GameObjects it is worth noting GameObjects can have child GameObjects with their own components and so on and this is what you can see under the PlayerChar_(UID) GameObject. 
+Now I have expanded the PlayerChar GameObject in the hierarchy to see its child GameObjects it is worth noting GameObjects can have child GameObjects with their own components and so on and this is what you can see under the PlayerChar_(UID) GameObject. 
 
 
-In the right panel you can see every component that is currently on the selected GameObject there are a lot because the PlayerCharacter GameObject is very complex with many moving parts that are seemingly not connected at all, this isn't true ofcourse but it sure does look that way.
+In the right panel you can see every component that is currently on the selected GameObject there are a lot because the PlayerChar GameObject is very complex with many moving parts that are seemingly not connected at all, this isn't true of course but it sure does look that way.
 
 
 ![UnityExplorer_PlayerGameObject_InScene](https://user-images.githubusercontent.com/3288858/172019801-93aa16fa-fb2a-47d3-ab7f-8de617ee3658.png)
