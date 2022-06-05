@@ -4,10 +4,11 @@ A written guide to help people of the [Outward Modding Discord](https://discord.
  
 
 
-Useful links : [Mefinos Outward Mod Template](https://github.com/Mefino/OutwardModTemplate) 
-	       [Faeryns Outward Mod Template](https://github.com/Faeryn/BepInEx-ModTemplate)
-               [SideLoader Docs](https://sinai-dev.github.io/OSLDocs)
-	       [Outward Wiki Modding Section](https://outward.fandom.com/wiki/Mod_development_guide)
+### Useful links :  
+1 : [Mefinos Outward Mod Template](https://github.com/Mefino/OutwardModTemplate) 
+2 : [Faeryns Outward Mod Template](https://github.com/Faeryn/BepInEx-ModTemplate)
+3 : [SideLoader Docs](https://sinai-dev.github.io/OSLDocs)
+4 : [Outward Wiki Modding Section](https://outward.fandom.com/wiki/Mod_development_guide)
 
 We will be using Mefinos Outward Mod Template as I started with this one originally, download and extract somewhere, remember where we wont be needing it for a while.
 
