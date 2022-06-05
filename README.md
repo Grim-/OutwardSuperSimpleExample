@@ -589,7 +589,7 @@ This is not a good idea for a mod, collisions make up a large part of this game'
 
 ```
 
-If you update the DodgeTrigger code to the above, you will see that as you expect, once we start the game and press dodge, we teleport 10 units ahead of the input direction. 
+If you update the DodgeTrigger code to the above, you will see that as you expect, once we start the game (make sure to build the .dll file again and copy it over!) then press dodge we teleport 10 units ahead of the input direction. 
 
 I wrote this mini guide in the hopes of inspiring some budding modders take the first steps with a practical example. 
 
