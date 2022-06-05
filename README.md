@@ -221,14 +221,14 @@ If you are just starting out following this guide and you are reading this code 
 Its true there's no replacement for experience but there are also a lot of talented, helpful people on the Modding Discord with knowledge enough to at least point you in the correct direction!
 
 
-The only line we are interested in is
+The only line we are interested in is...
 
 ```c#     
   base.SendMessage("DodgeTrigger", _direction, SendMessageOptions.DontRequireReceiver);
 ```
 
 
-This again requires some knowledge of how Unity works in this particular case, but since I know the function *SendMessage* 'SendMessage("DodgeTrigger", _direction, etc)' is used to call any function that matches the name **DodgeTrigger** that takes the a parameter called "_direction" on other components ** on the same GameObject **  
+This again requires some knowledge of how Unity works in this particular case but since I know the function *SendMessage* "SendMessage("DodgeTrigger", _direction, etc)" is used to call any function that matches the name **DodgeTrigger** that takes the a parameter called "_direction" on any other components that share the same GameObject parent.
 
 So thats our in!
 
