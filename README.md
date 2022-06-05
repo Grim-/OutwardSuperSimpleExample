@@ -498,3 +498,5 @@ IggyTheMad - The Glue of the discord, keeps things running, keeps people ticking
 Faeryn - Faeryn is another modder who makes a point to help out others on the modding discord and was what prompted this article originally, I have mostly shamelessly stolen Faeryns code and I am Lawyering up.
 
 Avrixel - Who was subject 0 and the original target of the impromptu guide and Mod Developer of the in-progress Frost Warrior Skill Tree.
+
+All the Jims that died while I was getting screenshots.
