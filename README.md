@@ -51,7 +51,7 @@ Well, A GameObject by itself is nothing! Quite literally nothing but a positon i
 It's the components on the GameObject that make it unique. (This is called Composition in programming jargon - an object is defined by the things that make it up)
 
 
-When we start adding Mesh Renderers components, Particle System components, Trail Effect components, thats when the GameObject starts to become something meaningful, a component is still a C# class but it extends from the Unity MonoBehaviour class, this is a class *ALL* GameObjects(and their constituent components) in the scene have. 
+When we start adding Mesh Renderers components, Particle System components, Trail Effect components thats when the GameObject starts to become something meaningful, a component is still a C# class but it extends from the Unity MonoBehaviour class this is a class *ALL* GameObjects(and their constituent components) in the scene have. 
 
 
 ## Part 1 B : A Typical Scene in Outward.
@@ -59,13 +59,13 @@ When we start adding Mesh Renderers components, Particle System components, Trai
 
 > How does this relate to Outward again?
 
-Outward is a game made in the Unity Engine.
+Outward is a game made in the Unity Engine. 
 
 In the screenshot below you can see two main panels on the left the "Object Explorer" this allows us to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject.
 
 (everything in the scene is a what? a GAMEOBJECT) 
 
-Now I have expanded it in the hierarchy to see its child GameObjects, it's worth noting GameObjects can have child GameObjects with their own components and so on and this is what you can see under the PlayerChar GameObject. 
+Now I have expanded it in the hierarchy to see its child GameObjects it is worth noting GameObjects can have child GameObjects with their own components and so on and this is what you can see under the PlayerChar_(UID) GameObject. 
 
 
 In the right panel you can see every component that is currently on the selected GameObject there are a lot because the PlayerCharacter GameObject is very complex with many moving parts that are seemingly not connected at all, this isn't true ofcourse but it sure does look that way.
