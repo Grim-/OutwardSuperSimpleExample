@@ -272,9 +272,9 @@ Lets see what that would look like.
     }
 ```
 
-
+```c#
 private Character character;
-
+```
 > Whats this? This a private variable that we are going to set a *reference* for in the Awake method so we can access some things on this *instance* of the Character class.
 
 
