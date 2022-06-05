@@ -60,7 +60,9 @@ You do not need to worry about this too much, if you follow along so far then yo
 
 [Inheritance Versus Composition In Unity](http://www.sigtrapgames.com/unity-software-design-inheritance-and-composition/)
 
-When we start adding [Mesh Renderer](https://docs.unity3d.com/Manual/class-MeshRenderer.html) components, [Particle System](https://docs.unity3d.com/Manual/class-ParticleSystem.html) components, [Trail Effect](https://docs.unity3d.com/Manual/class-TrailRenderer.html) components and all the other various custom and Unity made components, thats when the GameObject starts to become something meaningful, it stops being an abstract empty 'thing' and becomes the Player you interact with in-game, a component is still a C# class but it extends from the Unity MonoBehaviour class this is a class *ALL* GameObjects(and their constituent components) in the scene have. 
+When we start adding [Mesh Renderer](https://docs.unity3d.com/Manual/class-MeshRenderer.html) components, [Particle System](https://docs.unity3d.com/Manual/class-ParticleSystem.html) components, [Trail Effect](https://docs.unity3d.com/Manual/class-TrailRenderer.html) components and all the other various custom and Unity made components, thats when the GameObject starts to become something meaningful, it stops being an abstract empty 'thing' and becomes the Player you interact with, the enemies you fight, the effects you see, the UI you click.
+
+> A component is still a C# class but it extends from the Unity MonoBehaviour class this is a class *ALL* GameObjects(and their constituent components) in the scene have. 
 
 
 ## Part 1 B : A Typical Scene in Outward.
