@@ -255,6 +255,13 @@ The only line we are interested in is...
 
 This again requires some knowledge of how Unity works in this particular case but since I know the function *SendMessage*  is used to call any function that matches the name **DodgeTrigger** that takes a parameter named *_direction* on any other components that share the same GameObject parent.
 
+> How do you know that _direction is a Vector3 Type? 
+> 
+Experience with Unity. This is also a common Data type across many languages.
+
+Infact the SendMessage function doesn't require the variable Type of the data you want to send to the function it uses the base object Type, which to quote the Unity docs is the 'Base class for all objects Unity can reference'
+
+
 If you ran the below example it would try to call the function "AFunctionName" passing a float value of 1, to any other components that share the same GameObject parent.
 
 ```c#
