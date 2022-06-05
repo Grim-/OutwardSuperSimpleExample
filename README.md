@@ -167,7 +167,9 @@ In terms of mechanics Avrixel wanted to check that whenever the player dodges if
 So we need to create a MonoBehaviour(Component) that we add to the Player *GameObject* and that listens for when the player dodges and then removes a "stack" of the LeveledStatusEffect.
 
 
-> Ok but how *exactly* do we 'listen' for when the player dodges? 
+## Part 2 A : Listening for Dodges?
+
+> Ok so thats a component, its also nothing, until we make it something, how *exactly* do we 'listen' for when the player dodges? 
 
 This is the part of modding where things get tricky, it just experience and a lot of reading in DNSpy.
 
@@ -264,6 +266,8 @@ Here's the Unity Documents for [SendMessage](https://docs.unity3d.com/ScriptRefe
 So thats our in!
 
  We now know how to we can *listen* for when a player dodges by creating a MonoBehaviour that has a public method Called DodgeTrigger with a parameter called _direction and attaching it to our PlayerChar GameObject!
+
+
 
 
 Lets see what that would look like.
