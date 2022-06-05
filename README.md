@@ -243,13 +243,11 @@ The only line we are interested in is...
 
 This again requires some knowledge of how Unity works in this particular case but since I know the function *SendMessage* "SendMessage("DodgeTrigger", _direction, etc)" is used to call any function that matches the name **DodgeTrigger** that takes the a parameter called "_direction" on any other components that share the same GameObject parent.
 
+Here's the Unity Documents for [SendMessage](https://docs.unity3d.com/ScriptReference/Component.SendMessage.html) (as you can see its a method that any MonoBehaviour/Component can call)
+
 So thats our in!
 
  We now know how to we can *listen* for when a player dodges by creating a MonoBehaviour that has a public method Called DodgeTrigger with a parameter called _direction and attaching it to our PlayerChar GameObject!
-
-
-Here's the Unity Documents for [SendMessage](https://docs.unity3d.com/ScriptReference/Component.SendMessage.html) (as you can see its a method that any MonoBehaviour/Component can call)
-
 
 
 Lets see what that would look like.
