@@ -219,9 +219,9 @@ private Character character;
 
 Now we only need to get this reference once, doing it many times is costly, so the awake method is ideal for this as it is only ever called once, perfect.
 
-Remember when we talked about everything being components? 
+Remember when we talked about everything being GameObjects in the scene and GameObjects are made up of components? 
 
-Something you will do very often while working with any Unity game is using the GetComponent<T>() function to get a reference to a component where T is the type (the class) of component you wish to retrieve (aslong as it's base is MonoBehaviour!)
+Something you will do very often while working with any Unity game is using the GetComponent<T>() function to get a reference to a component where T is the type (the class) of component you wish to retrieve (aslong as it's base is MonoBehaviour!) This could be the Inventory (ItemContainer), the Status/BuffDebuffs (StatusEffectMngr), the one we want is the Character component. I'd encourage you to check out DNSpy and see all the methods and properties available.
 
 ```c#
 	public void Awake()
@@ -246,7 +246,7 @@ So ok we know how to listen for a dodge, we've created a component that we can p
 Well thats where BepInEx and Harmony come in, If you set up a Visual Studio project from the Mod template linked earlier you will find you already have a class ready to build and put into the game but it does nothing. 
 
 
-```csharp
+```c#
 
 	[BepInPlugin(GUID, NAME, VERSION)]
 	public class EmosModClass : BaseUnityPlugin
@@ -278,7 +278,7 @@ We now need to introduce our code into the Outward code base this is infact very
 
 So our project now looks like this, we are almost there! 
 
-```csharp
+```c#
 
         [BepInPlugin(GUID, NAME, VERSION)]
         public class EmosModClass : BaseUnityPlugin
