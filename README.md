@@ -61,14 +61,17 @@ When we start adding Mesh Renderers components, Particle System components, Trai
 
 Outward is a game made in the Unity Engine.
 
-In the picture below you can see two main panels, on the left the "Object Explorer" this allows us to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject(everything in the scene is a what? a GAMEOBJECT) and expanded it, it's worth noting GameObjects can have child GameObjects with their own components and so on and this is what you can see under the PlayerChar GameObject. 
+In the screenshot below you can see two main panels on the left the "Object Explorer" this allows us to view everything in the current scene, as you can see in this case the current scene is "DontDestroyOnLoad" and I have selected the PlayerChar GameObject.
+
+(everything in the scene is a what? a GAMEOBJECT) 
+
+Now I have expanded it in the hierarchy to see its child GameObjects, it's worth noting GameObjects can have child GameObjects with their own components and so on and this is what you can see under the PlayerChar GameObject. 
 
 
-In the right panel you can see every component that is currently on the selected GameObject, there are a lot because the PlayerCharacter GameObject is very complex with many moving parts that are seemingly not connected at all, this isn't true ofcourse but it sure does look that way.
+In the right panel you can see every component that is currently on the selected GameObject there are a lot because the PlayerCharacter GameObject is very complex with many moving parts that are seemingly not connected at all, this isn't true ofcourse but it sure does look that way.
 
 
 ![UnityExplorer_PlayerGameObject_InScene](https://user-images.githubusercontent.com/3288858/172019801-93aa16fa-fb2a-47d3-ab7f-8de617ee3658.png)
-
 
 (We'll come back to this later)
 
