@@ -160,7 +160,7 @@ Once downloaded, run the dnSpy executable and click > File > Open
 
 then navigate to where you have Outward installed once there navigate to Outward_Data/Managed and select Assembly-CSharp.dll.
 
-![image](https://user-images.githubusercontent.com/3288858/172026171-044ed237-059f-436e-8b67-2af50fa29412.png)
+![image](https://user-images.githubusercontent.com/3288858/172055463-f5cc953b-2343-44bc-ba94-1744626c0d54.png)
 
 This is the file Unity creates that contains most, if not all of the code from the game. 
 
