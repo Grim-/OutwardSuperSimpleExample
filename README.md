@@ -4,7 +4,7 @@
 Firstly I'd like to cover some Unity Basics.
 
 
-> Part One : Unity 101.
+## Part One : Unity 101.
 
 __Everything you *see* inside Outward while playing is a GameObject, that tree? GameObject. Player? GameObject. Particle Effect System? GAMEOBJECT. __
 So it is important to understand how these things work. 
@@ -27,7 +27,7 @@ In the right panel you can see every component that is currently on the selected
 (We'll come back to this later)
 
 
-> Part Two : #YEAH BUT WHAT IS A COMPONENT?
+## Part Two : #YEAH BUT WHAT IS A COMPONENT?
 
 Well ok but that doesn't really tell us still *what* a component is right?
 
@@ -239,7 +239,7 @@ gameObject.GetComponent<T> is the same thing for simplicity you don't need to us
 
 
 
-Part 3 : BepInEx, Harmony and you.
+## Part 3 : BepInEx, Harmony and you.
 
 
 So ok we know how to listen for a dodge, we've created a component that we can put on *any* GameObject with a Character component on it, how do we put that onto the Player actually in-game? 
@@ -432,7 +432,7 @@ I have started a new game using our Mod file and opened Unity Explorer again and
 
 You probably dont have Avrixels custom status effect so the code currently will do nothing for you, but if change our DodgeListener component, we can do something else instead!
 
-Part 4: Extra Credit
+## Part 4: Extra Credit
 
 
 Lets change that shall we? And quickly touch on the Transform component and positions in Unity. 
