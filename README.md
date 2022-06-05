@@ -417,6 +417,9 @@ Now if press Build > Build Project from Visual studio and go to output folder (I
 
 We now create a folder in our mod profile folder (If you are using R2ModMan) then Profile name > BepInEx > plugins  and create a new folder, this will be your mod folder, drop your created dll in here, now start the modded game (however you usually do that) 
 
+![image](https://user-images.githubusercontent.com/3288858/172029533-b42a1943-f433-46a6-adc8-993d60929f21.png)
+
+
 ![image](https://user-images.githubusercontent.com/3288858/172028816-e0770c41-10fe-4b36-ae90-11b60ed1786e.png)
 
 
