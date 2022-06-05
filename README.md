@@ -485,3 +485,16 @@ If you update the DodgeTrigger code to the above, you will see that as you expec
 https://i.imgur.com/6OzRVwm.mp4
 
 
+I plan to follow this up with a practical guide on creating *SIMPLE* Particle Effects in Unity for use in Outward. Please let me know via Discord about any issues, mistakes or other stuff, I go by 'Emo' in the modding discord.
+
+Special Thanks, in no particular order
+
+Sinai - of the Modding discord and Creator/Maintainer of SideLoader - without which ALL modding, would be magnitudes more difficult, the impact SideLoader has on the Outward Modding community cannot be understated. 
+
+I myself am nothing but a really enthusiastic amateur, I have been working on my own single player RPG for three years now and I have been working in Unity for a lot longer than that I tell you this to give you some context, that the sheer of amount of effort and love that has gone into SideLoader is honestly *staggering*.
+
+IggyTheMad - The Glue of the discord, keeps things running, keeps people ticking, helps out everywhere, has a bajillion mods. Great guy!
+
+Faeryn - Faeryn is another modder who makes a point to help out others on the modding discord and was what prompted this article originally, I have mostly shamelessly stolen Faeryns code and I am Lawyering up.
+
+Avrixel - Who was subject 0 and the original target of the impromptu guide and Mod Developer of the in-progress Frost Warrior Skill Tree.
