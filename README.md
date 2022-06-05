@@ -427,6 +427,13 @@ I have started a new game using our Mod file and opened Unity Explorer again and
 
 You probably dont have Avrixels custom status effect so the code currently will do nothing for you, but if change our DodgeListener component, we can do something else instead!
 
+Part 4: Extra Credit
+
+
+Lets change that shall we? And quickly touch on positions in Unity. 
+
+Instead of removing a status effect you probably dont have (yet!) why dont we make the Player teleport in the direction of the input?
+
 ```c#
 	//Our Custom Dodge Listner Component
 	public class DodgeListener : MonoBehaviour
@@ -440,11 +447,30 @@ You probably dont have Avrixels custom status effect so the code currently will 
 
 		public void DodgeTrigger(Vector3 _direction)
 		{
-			character.StartPuke();
+			//_direction is a Vector3 variable type - This is a type common in Unity used for defining things that have 3 axis (x, y, z)
+			//When the player dodges the direction they were pressing at the time of the dodge is passed along too, using this direction and our players CURRENT position we can make the player effecticely teleport in the direction we roll.
+			//am I going to write this out the long way so you can see every step
+
+			//remember how I said every GameObject exists in scene and without other components it only has a position in world space?
+			//character.transform is a short cut to retrieve the Transform component of the current GameObject we can then access the .position value to find where the player is stood in world co-ordinates right now.
+			//so we add the input _direct + the player positiion this gives up the place we want to teleport to relative to the players current position
+			//lets also add a length variable so we can adjust how far we teleport in the direction of the input
+
+			float TeleportLength = 10f;
+	               //direction times Teleport Length + players position
+			Vector3 TeleportDirection = (_direction * TeleportLength) + character.transform.position;
+
+			//now we call the Outward Teleport function, passing in the new positon we calculated and the our characters current rotation (this is something else the Transform component handles)
+			character.Teleport(TeleportDirection, character.transform.rotation);
 		}
 	}
 
 
 ```
 
-If you update the DodgeTrigger code to the above, you will see that as you expect, once we start
+If you update the DodgeTrigger code to the above, you will see that as you expect, once we start the game and press dodge, we teleport 10 units ahead of the input direction
+
+
+https://imgur.com/a/yye7HP5
+
+
