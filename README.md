@@ -123,7 +123,7 @@ The [MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
 	
 	}
 	
-        //This is called every frame by Unity (If you're curious how - Super Efficient Reflection) 
+        //This is called every frame by Unity (If you're curious how - Super Efficient Reflection Unity itself is a Managed C++ Engine abstracted into C#) 
 	public void Update()
 	{
 	
