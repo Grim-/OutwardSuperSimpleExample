@@ -96,6 +96,7 @@ Well a component is whatever you want it to be. At it's core just code.
 
 The [MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html) component gives us access to a few methods that are called depending on the GameObjects 'Lifecycle'
 
+```c#
     //custom component
     public class YourComponentName : MonoBehaviour
     {        
@@ -126,6 +127,7 @@ The [MonoBehaviour](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
 	
         }
     }
+```
 
 
 Armed with some basics lets move on to the current use-case.
