@@ -616,7 +616,7 @@ https://i.imgur.com/6OzRVwm.mp4
 
 # Tasks
 - [ ] Intro into Particle Effects, Asset Bundles and Importing to Outward via SideLoader
-- [ ] Part Two Taking the next next Step (Talking Items) 
+- [ ] Part Two Taking the Next (next) Step - [Talking Items and creating your own in-game events to listen for things and stuff.] 
 
 
 
