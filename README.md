@@ -253,7 +253,7 @@ The only line we are interested in is...
 ```
 
 
-This again requires some knowledge of how Unity works in this particular case but since I know the function *SendMessage*  is used to call any function that matches the name **DodgeTrigger** that takes a parameter named *_direction* on any other components that share the same GameObject parent.
+This again requires some knowledge of how Unity works in this particular case but since I know the function *SendMessage*  is used to call any function that matches the name **DodgeTrigger** that takes a parameter named *_direction* on any other components that share the same GameObject.
 
 > How do you know that _direction is a Vector3 Type? 
 > 
@@ -598,16 +598,29 @@ This is not a good idea for a mod, collisions make up a large part of this game'
 
 If you update the DodgeTrigger code to the above, you will see that as you expect, once we start the game (make sure to build the .dll file again and copy it over!) then press dodge we teleport 10 units ahead of the input direction. 
 
-I wrote this mini guide in the hopes of inspiring some budding modders take the first steps with a practical example. 
+# End 
+
+
+I wrote this mini guide in the hopes of inspiring some budding modders take the first steps with a practical example, I have plans to follow up with a second focused more on getting useful information out of the game and covering Harmony patching a little more - this won't be too technical and will touch more on setting up a patch than how the patches themselves work.
+I also plan to write a practical guide on creating *SIMPLE* Particle Effects in Unity then importing them for use in Outward using SideLoader. 
+
+
+Please let me know via Discord about any issues, mistakes or other stuff, I go by 'Emo' in the [Outward Modding Discord](https://discord.gg/DPD9eGDU).
+
 
 I hope this helps some what connect the dots of modding in Outward.
 
 https://i.imgur.com/6OzRVwm.mp4
 
 
-I plan to follow this up with a practical guide on creating *SIMPLE* Particle Effects in Unity for use in Outward. Please let me know via Discord about any issues, mistakes or other stuff, I go by 'Emo' in the modding discord.
 
-Special Thanks, in no particular order
+# Tasks
+- [ ] Intro into Particle Effects, Asset Bundles and Importing to Outward via SideLoader
+- [ ] Part Two Taking the next next Step (Talking Items) 
+
+
+
+## Special Thanks, in no particular order
 
 Sinai - of the Modding discord and Creator/Maintainer of SideLoader - without which ALL Outward modding, would be magnitudes more difficult, the impact SideLoader has on the Outward Modding community cannot be understated. 
 
@@ -620,3 +633,4 @@ Faeryn - Faeryn is another modder who makes a point to help out others on the mo
 Avrixel - Who was subject 0 and the original target of the impromptu guide and Mod Developer of the in-progress Frost Warrior Skill Tree.
 
 All the Jims that died while I was getting screenshots.
+
