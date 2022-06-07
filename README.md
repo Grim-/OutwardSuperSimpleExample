@@ -17,7 +17,7 @@ Firstly I'd like to cover some Unity Basics before moving on to the modding itse
 
 ## Part One : Unity 101.
 
-__Everything you *see* inside Outward while playing is a GameObject, that tree? GameObject. Player? GameObject. Particle Effect System? GAMEOBJECT__
+__Everything you *see* inside Outward while playing is a GameObject, that tree? GameObject. Player? GameObject. Pretty Visual? GAMEOBJECT__
 
 __So it is important to understand how these things work.__
 
