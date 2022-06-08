@@ -530,7 +530,7 @@ We now create a folder in our mod profile folder (If you are using R2ModMan) the
 ![image](https://user-images.githubusercontent.com/3288858/172028816-e0770c41-10fe-4b36-ae90-11b60ed1786e.png)
 
 
-I have started a new game using our Mod file and opened Unity Explorer again and expanded the Player GameObject, as you can see the Player now successfully has the our component attached to it!
+I have started a new game using our Mod file and opened Unity Explorer again and expanded the Player GameObject, as you can see now we have successfully patched the Character.Awake method to add our custom DodgeListener component.
 
 ![image](https://user-images.githubusercontent.com/3288858/172029000-3feeb33d-e581-43a3-a011-e8cf4023a7f5.png)
 
