@@ -122,7 +122,7 @@ For a more obvious example heres how this armour set looks before fiddling with 
 ![Golden Sand'](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/a9fc5cbf-b6e6-47ff-bdec-ea38cfa850ac)
 
 
-Heres that same armour but with metallic and smoothness values maxed and a golden specular color
+Heres that same armour but with metallic and smoothness values maxed and a golden specular color (the brighest spots are the specularity coloring)
 
 Fully mapped smooth and metallic with no Ambient Occulsion (thats why its so dark)
 ![image](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/9a5a0599-7c7c-4a37-bb8c-bb455b26bfd4)
