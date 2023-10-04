@@ -21,7 +21,6 @@ Alpha : Unused as far as I can tell
 
 
 
-
 Now I took the Wolf Tower Shield(A) and made two copies of the item (B Shiny Wolf Shield) and (C Super Shiny No Detail Wolf Shield), being sure to give them new IDs.
 
 ![Regular Shield at night near a torch](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/c484859d-8685-4674-abf3-7363eee09b6d)
@@ -30,17 +29,44 @@ Now I took the Wolf Tower Shield(A) and made two copies of the item (B Shiny Wol
 
 
 Then I edited the _GenTex file which is the texture property used by Outwards default shader this is specifically our 'PBRMap'.
+If a model does not have a _GenTex or it does but its white/black then you will need to create your own, you can usually just draw a silouhette around the maintexture and draw the outline on top of it.
 
-If a model does not have a _GenTex or it does but its white/black then you will need to create your own, 
-
-
-
+So if we understand PBR then we know, according to Outwards implementation if we want to make a particular object very shiny(blue) + metallic(red), then we need to color our _GenTex texture purple at the highest values.
 
 
+![_Original Gen Texture](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/c0bede67-67a1-4fd1-8208-0557aa579664)
+
+![_Increased MetallicSmoothness Texture](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/580c817a-dc6e-4eda-989b-aca32779c5d2)
+
+![_Maximum MetallicSmoothness Texture](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/295fd402-63ea-4867-9714-5f3b1205e64a)
 
 
 
+We also have Shader properties we can play with you will find then in the folder for the material of that particular item in this case its ...'SideLoader/Test/Items/NewWolfShield/Textures/properties.xml' but it will vary slighly for you, in this file you have all the available shader properties where you can change and edit the values, in this case of the edited shield and the super shiny shield I used these values
 
+
+Edited Wolf Shield
+```xml
+    <ShaderProperty xsi:type="FloatProp">
+      <Name>_SmoothMin</Name>
+      <Value>0.5</Value>
+    </ShaderProperty>
+    <ShaderProperty xsi:type="FloatProp">
+      <Name>_SmoothMax</Name>
+      <Value>1</Value>
+    </ShaderProperty>
+```
+Edited Super Shiny Wolf Shield
+```xml
+    <ShaderProperty xsi:type="FloatProp">
+      <Name>_SmoothMin</Name>
+      <Value>0.9</Value>
+    </ShaderProperty>
+    <ShaderProperty xsi:type="FloatProp">
+      <Name>_SmoothMax</Name>
+      <Value>1</Value>
+    </ShaderProperty>
+```
 
 
 
