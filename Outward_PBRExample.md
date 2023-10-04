@@ -55,9 +55,9 @@ Edited Wolf Shield
 
 
 ## Edited Maxed Smoothness and Metallic (Far right shield)
-Edited and Super shiny max smoothness shield together
+Edited and Super shiny max smoothness shield together (you might notice it looks almost like its wet because both smoothness and metallic are at the maximum possible setting generally you would never go this high
 ![Edited and Super shiny max smoothness shield together](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/27e6a88c-ed91-4254-a576-5164d8608d03)
-![_Maximum MetallicSmoothness Texture](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/295fd402-63ea-4867-9714-5f3b1205e64a)
+![Maximum MetallicSmoothness Texture](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/295fd402-63ea-4867-9714-5f3b1205e64a)
 
 Edited Super Shiny Wolf Shield
 ```xml
@@ -90,8 +90,30 @@ SpecColor
 
 
 
+For a more obvious example heres the 'Golden Sand' armour before updating the _GenTex
+
+![Golden Sand'](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/a9fc5cbf-b6e6-47ff-bdec-ea38cfa850ac)
 
 
+Heres that same armour but with metallic and smoothness values maxed and a golden specular color
+
+Fully mapped smooth and metallic with no Ambient Occulsion (thats why its so dark)
+![image](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/9a5a0599-7c7c-4a37-bb8c-bb455b26bfd4)
+
+
+And here again the same armour but with proper mapping 
+
+Mapped and Colored
+![image](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/11c60d44-8e14-49f3-8c08-7e72ec1c7c82)
+
+
+
+Heres how the MainTex and GenTex look for the final picture
+
+MainTex
+![image](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/f3538a46-97e7-4152-ae5f-dc0c73565009)
+GenTex
+![image](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/7245b3bc-fb56-41da-bc17-b61a770794d0)
 
 
 
