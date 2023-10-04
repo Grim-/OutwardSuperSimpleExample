@@ -6,7 +6,7 @@ This will assume you know atleast how to install and use SideLoader in order to 
 PBR - Physically based rendering and why it matters to you.
 
 
-PBR is a mostly game dev technique for reducing the amount of memory used while still retaining good visuals/reaction to lightning/shadows, this is done by using one of each channel on an image (red, green, blue, alpha) and mapping those values to something in-game. 
+PBR is a mostly game dev technique (but not only) for reducing the amount of memory used on textures while still retaining good visuals/reaction to lightning/shadows, this is done by using one of each channel on an image (red, green, blue, alpha) and mapping those values to something in-game.
 
 Now you no longer need a texture for each thing you want to map (wetness, light, emission, metallic, smoothness) you can instead merge these into one texture, where each channel controls the value for a certain property while there is a certain 'standard' this is very much down to the implementation in the shader itself.
 
@@ -18,9 +18,10 @@ Green : Unused as far as I can tell or maybe Ambient Occlusion
 Blue : Smoothness
 Alpha : Unused as far as I can tell 
 
-Now I took the Wolf Tower Shield(A) and made two copies of the item (B Shiny Wolf Shield) and (C Super Shiny No Detail Wolf Shield), being sure to give them new IDs.
 
+Now I took the Wolf Tower Shield(A) and made two copies of the item (B Shiny Wolf Shield) and (C Super Shiny No Detail Wolf Shield) being sure to give them new IDs.
 Then I edited the _GenTex file which is the texture property used by Outwards default shader this is specifically our 'PBRMap'.
+
 If a model does not have a _GenTex or it does but its white/black then you will need to create your own, you can usually just draw a silouhette around the maintexture and draw the outline on top of it.
 
 So if we understand PBR then we know, according to Outwards implementation if we want to make a particular object very shiny(blue) + metallic(red), then we need to color our _GenTex texture purple at the highest values.
