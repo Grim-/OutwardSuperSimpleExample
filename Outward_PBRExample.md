@@ -18,8 +18,11 @@ Now you no longer need a texture for each thing you want to map (wetness, light,
 In the case of Outward this means
 
 Red : Metallic 
+
 Green : Unused as far as I can tell or maybe Ambient Occlusion
+
 Blue : Smoothness
+
 Alpha : Unused as far as I can tell 
 
 
