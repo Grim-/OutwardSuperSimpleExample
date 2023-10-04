@@ -54,7 +54,7 @@ Edited Wolf Shield
 ```
 
 
-## Edited Maxed Smoothness and Metallic
+## Edited Maxed Smoothness and Metallic (Far right shield)
 Edited and Super shiny max smoothness shield together
 ![Edited and Super shiny max smoothness shield together](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/27e6a88c-ed91-4254-a576-5164d8608d03)
 ![_Maximum MetallicSmoothness Texture](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/295fd402-63ea-4867-9714-5f3b1205e64a)
@@ -72,8 +72,20 @@ Edited Super Shiny Wolf Shield
 ```
 
 
+Since this techinque also deals with specularity of an object too, you might want to change the _SpecColor property too, for example if you were making golden armour, you might set this to a very light orange/yellow
 
-
+SpecColor
+```xml
+    <ShaderProperty xsi:type="ColorProp">
+      <Name>_SpecColor</Name>
+      <Value>
+        <r>0.9</r>
+        <g>0.6</g>
+        <b>0</b>
+        <a>1</a>
+      </Value>
+    </ShaderProperty>
+```
 
 
 
