@@ -22,10 +22,16 @@ Alpha : Unused as far as I can tell
 
 
 Now I took the Wolf Tower Shield(A) and made two copies of the item (B Shiny Wolf Shield) and (C Super Shiny No Detail Wolf Shield), being sure to give them new IDs.
-
+Regular Shield at night
 ![Regular Shield at night near a torch](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/c484859d-8685-4674-abf3-7363eee09b6d)
+
+
+Edited Shield Smoothness and Metallic values increased
 ![Edited Shield Smoothness and Metallic values increased](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/13a5a3c6-5d18-4f70-b2e0-852a1b2830c7)
-![REgular Edited and Super shiny max smoothness shield together](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/27e6a88c-ed91-4254-a576-5164d8608d03)
+
+
+Edited and Super shiny max smoothness shield together
+![Edited and Super shiny max smoothness shield together](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/27e6a88c-ed91-4254-a576-5164d8608d03)
 
 
 Then I edited the _GenTex file which is the texture property used by Outwards default shader this is specifically our 'PBRMap'.
