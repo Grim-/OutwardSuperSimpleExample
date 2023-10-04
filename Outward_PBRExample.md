@@ -44,15 +44,27 @@ We also have Shader properties we can play with you will find then in the folder
 ## The standard shield
 
 Regular Shield at night
+
 ![Regular Shield at night near a torch](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/c484859d-8685-4674-abf3-7363eee09b6d)
+
+
 Regular Gen Text
+
 ![_Original Gen Texture](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/c0bede67-67a1-4fd1-8208-0557aa579664)
+
+
 ## Edited Shield
 
 Edited Shield Smoothness and Metallic values increased
+
 ![Edited Shield Smoothness and Metallic values increased](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/13a5a3c6-5d18-4f70-b2e0-852a1b2830c7)
+
+
 Edited Gen Text
+
 ![_Increased MetallicSmoothness Texture](https://github.com/Grim-/OutwardSuperSimpleExample/assets/3288858/580c817a-dc6e-4eda-989b-aca32779c5d2)
+
+
 
 Edited Wolf Shield
 ```xml
